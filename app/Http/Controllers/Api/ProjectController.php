@@ -22,7 +22,7 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        $project = Project::with('type', 'techologies')->where('id', $id)->first();
+        $project = Project::with(/* 'techologies', */ 'type')->where('id', $id)->first();
 
         if ($project) {
             // return object
