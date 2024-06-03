@@ -19,4 +19,24 @@ class ProjectController extends Controller
             'carosuelProjects' => $carosuelProjects
         ]);
     }
+
+    public function show($id)
+    {
+        $project = Project::with('type', 'techologies')->where('id', $id)->first();
+
+        if ($project) {
+            // return object
+            return response()->json([
+                'success' => true,
+                'response' => $project,
+            ]);
+        } else {
+            // 404 error
+            return response()->json([
+                'success' => false,
+                'response' => '404 ERROR PAGE NOT FOUND'
+            ]);
+        }
+
+    }
 }
